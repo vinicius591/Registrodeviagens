@@ -57,16 +57,26 @@ def viagem_mais_cara(listaViagens):
         print("\nNenhuma viagem registrada: ")
         return
     
-    mais_cara = max(listaViagens, key=lambda v: v["gasto"])
+def pegar_gasto(v):
+    return v["gasto"]
 
-    print("\nViagem mais cara: ")
+def viagem_mais_cara(listaViagens):
+    if not listaViagens:
+        print("\n⚠ Nenhuma viagem registrada ainda.\n")
+        return
+
+    mais_cara = max(listaViagens, key=pegar_gasto)
+
+    print("\n Viagem com maior gasto:")
     print(f"Motorista: {mais_cara['motorista']}")
     print(f"Destino: {mais_cara['destino']}")
-    print(f"Gasto: R$ {mais_cara['gasto']: .2f}")
+    print(f"Gasto: R$ {mais_cara['gasto']:.2f}\n")
+
     
-def mdeia_consumo (listaViagens):
+def media_consumo (listaViagens):
     if not listaViagens:
         print("\nNenhuma viagem registrada")
         return
     
-    media=sum (v["consumo"]for v in listaViagens / )
+    media=sum (v["consumo"]for v in listaViagens) / len(listaViagens)
+    print(f"\nMedia geral do consumo: {media:.2f} ")
